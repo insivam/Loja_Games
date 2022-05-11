@@ -55,7 +55,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}") // Método delete para deletar uma categoria
-    public ResponseEntity<Void> deleteCategoria(@PathVariable Long id) {
+    public ResponseEntity<?> deleteCategoria(@PathVariable Long id) {
         if (categoriaRepository.existsById(id)) {
             categoriaRepository.deleteById(id);
             return ResponseEntity.noContent().build();

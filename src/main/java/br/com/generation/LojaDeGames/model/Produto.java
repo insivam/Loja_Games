@@ -20,7 +20,15 @@ import jakarta.validation.constraints.Size;
 @Entity // create table
 @Table(name = "tb_loja")
 public class Produto {
-    @Id // primary key (id)
+    public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@Id // primary key (id)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -49,7 +57,12 @@ public class Produto {
     @ManyToOne
     @JsonIgnoreProperties("produtos")
     private Categoria categoria;
+    
+    @ManyToOne
+    @JsonIgnoreProperties("produtos")
+    private Usuario usuario;
 
+    
     // Getters and Setters
 
     public Long getId() {
